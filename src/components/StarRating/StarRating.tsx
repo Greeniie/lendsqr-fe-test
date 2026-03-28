@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./starRating.module.scss";
+import styles from "./starrating.module.scss";
 
 interface Props {
   rating: number; 
