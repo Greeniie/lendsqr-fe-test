@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "test": "jest --watch",
     "test:ci": "jest --ci",
-    "mock-api": "json-server --watch users.json --port 4000"
+    "mock-api": "json-server --watch users.json"
   },
   "dependencies": {
     "react": "^19.2.4",

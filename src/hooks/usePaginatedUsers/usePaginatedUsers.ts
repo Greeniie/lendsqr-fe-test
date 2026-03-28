@@ -20,9 +20,9 @@ export const usePaginatedUsers = (
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-   const BASE_URL =
+  const BASE_URL =
     import.meta.env.MODE === "development"
-      ? "http://localhost:4000/users"
+      ? "http://localhost:3000/users"
       : "/users.json"; // production
 
   useEffect(() => {
@@ -32,12 +32,15 @@ export const usePaginatedUsers = (
       setLoading(true);
       try {
         const res = await fetch(BASE_URL);
-        if (!res.ok) throw new Error("Failed to fetch users. The mock server is hosted offline so you may need to run it manually");
+        if (!res.ok) throw new Error("Failed to fetch users.");
 
-        const allUsers: User[] = await res.json();
+        let allUsers: User[] | { users: User[] } = await res.json();
+        const usersArray: User[] = Array.isArray(allUsers)
+          ? allUsers
+          : allUsers.users;
 
-        // Filter locally for case-insensitive matching and date
-        const filteredUsers = allUsers.filter((user) => {
+        // Filter logic remains unchanged
+        const filteredUsers = usersArray.filter((user) => {
           return (
             (!filters.organization ||
               user.organization.toLowerCase() ===

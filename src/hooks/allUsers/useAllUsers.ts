@@ -54,37 +54,40 @@ export const useAllUsers = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-   const BASE_URL =
-    import.meta.env.MODE === "development"
-      ? "http://localhost:4000/users"
-      : "/users.json"; // production
+ const BASE_URL =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:3000/users"
+    : "/users.json"; // production
 
-  useEffect(() => {
-    let isMounted = true;
+useEffect(() => {
+  let isMounted = true;
 
-    const fetchAllUsers = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(BASE_URL);
-        if (!res.ok)
-          throw new Error(
-            "Failed to fetch users. The mock server is hosted offline so you may need to run it manually",
-          );
+  const fetchAllUsers = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(BASE_URL);
+      if (!res.ok)
+        throw new Error(
+          "Failed to fetch users. Make sure the server is running or the JSON exists.",
+        );
 
-        const data: User[] = await res.json();
-        if (isMounted) setUsers(data);
-      } catch (err: any) {
-        if (isMounted) setError(err.message || "Something went wrong");
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    };
+      // Type the response
+      const json: User[] | { users: User[] } = await res.json();
 
-    fetchAllUsers();
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+      // Normalize the array
+      const data: User[] = Array.isArray(json) ? json : json.users;
+
+      if (isMounted) setUsers(data);
+    } catch (err: any) {
+      if (isMounted) setError(err.message || "Something went wrong");
+    } finally {
+      if (isMounted) setLoading(false);
+    }
+  };
+
+  fetchAllUsers();
+  return () => { isMounted = false; };
+}, []);
 
   return { users, loading, error };
 };

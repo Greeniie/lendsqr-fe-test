@@ -76,7 +76,7 @@ Run the JSON server:
 npx json-server users.json
 ```
 
-The mock api will be available at: http://localhost:4000. When viewing the hosted page on netlify, i have added a static json since the local server won't be available online.
+The mock api will be available at: http://localhost:3000. When viewing the hosted page on netlify, i have added a static json since the local server won't be available online.
 
 ## Running Tests
 
