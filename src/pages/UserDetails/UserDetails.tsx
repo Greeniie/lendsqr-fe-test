@@ -12,14 +12,57 @@ const UserDetails: React.FC = () => {
   const { id } = useParams<{ id: any }>();
 
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("selectedUser");
-    if (storedUser) {
-      const parsedUser: User = JSON.parse(storedUser);
-      if (parsedUser.id === id) setUser(parsedUser);
+
+useEffect(() => {
+  const storedUser = localStorage.getItem("selectedUser");
+
+  if (storedUser) {
+    const parsedUser: User = JSON.parse(storedUser);
+    if (String(parsedUser.id) === String(id)) {
+      setUser(parsedUser);
+      setLoading(false);
+      return;
     }
-  }, [id]);
+  }
+
+  // Fallback: fetch from JSON
+  const fetchUser = async () => {
+    try {
+      const res = await fetch(
+        import.meta.env.MODE === "development"
+          ? "http://localhost:4000/users"
+          : "/users.json"
+      );
+
+      const json: User[] | { users: User[] } = await res.json();
+      const users = Array.isArray(json) ? json : json.users;
+
+      const foundUser = users.find((u) => String(u.id) === String(id));
+
+      if (foundUser) setUser(foundUser);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchUser();
+}, [id]);
+
+
+  if (loading) {
+  return (
+    <div className={styles.skeletonContainer}>
+      <div className={styles.skeletonHeader} />
+      <div className={styles.skeletonCard} />
+      <div className={styles.skeletonSection} />
+      <div className={styles.skeletonSection} />
+    </div>
+  );
+}
 
   if (!user) {
     return (
