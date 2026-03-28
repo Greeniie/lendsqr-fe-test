@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 26px;
+  font-family: "Work Sans", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+
+  .card {
+    width: 240px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 20px 0 30px 30px;
+  }
+
+  .label {
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .value {
+    font-weight: 600;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    .card {
+      width: calc(50% - 13px);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    gap: 16px;
+    flex-wrap: wrap;
+
+    .card {
+      width: 100%; // full width
+      padding: 16px;
+    }
+
+    .label {
+      font-size: 12px;
+    }
+
+    .value {
+      font-size: 20px;
+    }
+  }
+}

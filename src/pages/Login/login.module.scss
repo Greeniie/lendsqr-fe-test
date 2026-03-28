@@ -1,0 +1,252 @@
+/* Avenir Next Regular */
+@font-face {
+  font-family: "Avenir Next";
+  src: url("/fonts/AvenirNextCyr-Regular") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("/fonts/AvenirNextCyr-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.page {
+  position: relative;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.logo {
+  position: absolute;
+  height: 36;
+  top: 106px;
+  left: 97px;
+  opacity: 1;
+
+  img {
+    width: 173.76px;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.9;
+  }
+}
+
+.left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.03);
+
+  img {
+    width: 600px;
+    height: 337.57px;
+    opacity: 1;
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    height: 200px;
+  }
+}
+
+.right {
+  font-family: Avenir Next;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 2rem;
+
+  .form {
+    width: 100%;
+    max-width: 447px;
+    display: flex;
+    flex-direction: column;
+
+    .loginheader {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 100%;
+      letter-spacing: -4%;
+      margin-bottom: 10px;
+      color: #213f7d;
+      height: 55px;
+    }
+
+    .subtitle {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: #545f7d;
+      padding-bottom: 60px;
+    }
+
+    .formcontainer {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    label {
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #374151;
+    }
+
+    .passwordField {
+      position: relative;
+      width: 100%;
+
+      input {
+        width: 100%;
+        height: 50px;
+        padding: 0 60px 0 16px; // 👈 horizontal padding only
+        border: 2px solid #545f7d26;
+        border-radius: 5px;
+        font-size: 14px;
+        font-family: "Avenir Next", sans-serif;
+        box-sizing: border-box;
+      }
+
+      .toggle {
+        position: absolute;
+        right: 16px;
+        top: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 500;
+        color: #39cdcc;
+        cursor: pointer;
+        text-transform: uppercase;
+      }
+    }
+
+    input {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      height: 50px;
+      padding: 0 0 0 16px;
+      border: 2px solid #545f7d26;
+      border-radius: 5px;
+      font-size: 1rem;
+      &:focus {
+        outline: none;
+        border-color: #545f7d26;
+        box-shadow: 0 0 0 1px #3b82f6;
+      }
+      &::placeholder {
+        font-family: Avenir Next;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #545f7d;
+      }
+    }
+
+    .forgot {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 10%;
+      text-align: left;
+      text-transform: uppercase;
+      color: #39cdcc;
+      padding-bottom: 30px;
+    }
+
+    button {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 100%;
+      letter-spacing: 10%;
+      text-align: center;
+      text-transform: uppercase;
+
+      width: 447px;
+      height: 48px;
+      opacity: 1;
+      border-radius: 8px;
+
+      padding: 0.75rem 1rem;
+      background-color: #39cdcc;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #213f7d;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .left {
+    display: none;
+  }
+
+  .logo {
+    position: fixed; // key change
+    top: 50px;
+    left: 20px;
+    z-index: 100;
+
+    img {
+      width: 150px;
+    }
+  }
+
+  .container {
+    display: block;
+    height: 100vh;
+  }
+
+  .right {
+    width: 100%;
+    height: 100vh;
+    padding: 0 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right .form {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .right .form button {
+    width: 100%;
+  }
+
+  .right .form .loginheader {
+    font-size: 28px;
+    height: auto;
+  }
+
+  .right .form .subtitle {
+    font-size: 16px;
+    padding-bottom: 40px;
+  }
+}

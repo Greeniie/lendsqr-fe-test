@@ -1,0 +1,236 @@
+.header {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  font-family: "Work Sans", sans-serif;
+
+  .loggo {
+    display: flex;
+    gap: 20px;
+  }
+
+  .mobileHamburger {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .headerContent {
+    width: 100%;
+    padding: 35px 30px;
+    display: flex;
+    gap: 30%;
+    align-items: center;
+  }
+
+  .mobileMenu {
+    position: absolute;
+    top: 70px;
+    right: 16px;
+    width: 180px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+  }
+
+  .menuItem {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &:hover {
+      background: rgba(57, 205, 204, 0.08);
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .logo {
+    width: 144.803955078125;
+    height: 30;
+    opacity: 1;
+  }
+
+  .searchWrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .searchInput {
+    width: 400px;
+    height: 40px;
+    padding: 0 16px;
+    color: #545f7d;
+    border: 1px solid rgba(84, 95, 125, 0.15);
+    border-right: none; // 👈 merges with button
+    border-radius: 8px 0 0 8px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 14px;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 100%;
+      letter-spacing: 0%;
+
+      color: #545f7d;
+    }
+  }
+
+  .searchButton {
+    width: 56px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #39cdcc;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .docs {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: 0%;
+  }
+
+  .notif {
+    padding-left: 47px;
+    padding-right: 30px;
+  }
+
+  .info {
+    padding: 35px 60px 35px 0;
+    display: flex;
+    align-items: center;
+    font-family: " Roboto", sans-serif;
+  }
+  .user {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 10px;
+    }
+  }
+
+
+@media (max-width: 1024px) {
+    .searchInput {
+      display: none;
+    }
+
+    .searchButton {
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+    }
+}
+
+  @media (max-width: 768px) {
+    .mobileHamburger {
+      display: block;
+    }
+
+    .searchInput {
+      display: none;
+    }
+
+    .searchButton {
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+    }
+
+    .info {
+      padding-right: 0;
+    }
+
+    .docs,
+    .notif,
+    .username,
+    .dropdownIcon {
+      display: none;
+    }
+
+    .headerContent {
+      gap: 30px;
+      padding: 20px;
+    }
+  }
+}
+
+.searchModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchModal {
+  width: 90%;
+  max-width: 350px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modalInput {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
+  border: 1px solid rgba(84, 95, 125, 0.15);
+  border-radius: 8px;
+  &:focus {
+    outline: none;
+    border-color: #39cdcc;
+  }
+  &::placeholder {
+    color: #545f7d;
+  }
+}
