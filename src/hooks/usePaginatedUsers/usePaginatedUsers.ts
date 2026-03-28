@@ -20,14 +20,19 @@ export const usePaginatedUsers = (
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+   const BASE_URL =
+    import.meta.env.MODE === "development"
+      ? "http://localhost:4000/users"
+      : "/users.json"; // production
+
   useEffect(() => {
     let isMounted = true;
 
     const fetchUsers = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:4000/users`);
-        if (!res.ok) throw new Error("Failed to fetch users");
+        const res = await fetch(BASE_URL);
+        if (!res.ok) throw new Error("Failed to fetch users. The mock server is hosted offline so you may need to run it manually");
 
         const allUsers: User[] = await res.json();
 

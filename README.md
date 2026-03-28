@@ -25,27 +25,27 @@ This project is an assessment task for the **Frontend Developer** role at **Lend
 
 ## Features
 
-- User management table with filtering, sorting, and pagination  
-- Action menus with **View Details**, **Blacklist**, and **Activate** options  
-- Fully typed with **TypeScript** for type safety  
-- SCSS modules for component-level styling  
-- Mock API served via **JSON Server**  
+- User management table with filtering, sorting, and pagination
+- Action menus with **View Details**, **Blacklist**, and **Activate** options
+- Fully typed with **TypeScript** for type safety
+- SCSS modules for component-level styling
+- Mock API served via **JSON Server**
 - Unit and integration tests covering **positive and negative scenarios**
 
 ---
 
 ## Tech Stack
 
-- **React** + **TypeScript**  
-- **SCSS**  
-- **Jest** & **React Testing Library** for testing  
-- **json-server** for mock API  
+- **React** + **TypeScript**
+- **SCSS**
+- **Jest** & **React Testing Library** for testing
+- **json-server** for mock API
 
 ---
 
 ## Demo
 
-> This is based on the Lendsqr Admin Console design snippet on figma.  
+> This is based on the Lendsqr Admin Console design snippet on figma.
 
 - Run the dev server locally to explore the UI.
 - Filters, pagination, and action menus work with the mock API.
@@ -54,15 +54,16 @@ This project is an assessment task for the **Frontend Developer** role at **Lend
 
 ## Installation
 
- **Clone the repository**
+**Clone the repository**
 
 ```bash
 git clone <repository-url>
 cd lendsqr-fe-test
-npm run dev 
+npm run dev
 
 ```
 
+You can just click on the login button to enter the admin area. There is no authentication set up
 
 ## Mock API
 
@@ -74,7 +75,8 @@ Run the JSON server:
 ```bash
 npx json-server users.json
 ```
-The API will be available at: http://localhost:4000
+
+The mock api will be available at: http://localhost:4000. When viewing the hosted page on netlify, i have added a static json since the local server won't be available online.
 
 ## Running Tests
 
@@ -95,4 +97,5 @@ Click action menus to view user details, blacklist, or activate users.
 Use pagination buttons to navigate multiple pages.
 
 ## Author
+
 Tejiri Anthony

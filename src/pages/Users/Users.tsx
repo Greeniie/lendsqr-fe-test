@@ -4,6 +4,7 @@ import { usePaginatedUsers } from "../../hooks/usePaginatedUsers/usePaginatedUse
 import { useAllUsers } from "../../hooks/allUsers/useAllUsers";
 import UserHighlights from "../../components/UserHighlights/UserHighlights";
 import UserTable from "../../components/UserTable/UsersTable";
+import ErrorFallback from "../../components/ErrorFallback/ErrorFallback";
 
 const Users: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,8 +24,8 @@ const Users: React.FC = () => {
     error: highlightsError,
   } = useAllUsers();
 
-  if (error) return <p>{error}</p>;
-  if (highlightsError) return <p>{highlightsError}</p>;
+ if (error) return <ErrorFallback message={error} />;
+if (highlightsError) return <ErrorFallback message={highlightsError} />;
 
   // Skeleton for highlights
   const renderHighlightsSkeleton = () => (

@@ -5,6 +5,7 @@ import styles from "./userdetails.module.scss";
 import backimg from "../../assets/icons/np_back_3007750_000000 1.svg";
 import photo from "../../assets/icons/avatar.svg";
 import StarRating from "../../components/StarRating/StarRating";
+import ErrorFallback from "../../components/ErrorFallback/ErrorFallback";
 
 const UserDetails: React.FC = () => {
   const navigate = useNavigate();
@@ -22,12 +23,7 @@ const UserDetails: React.FC = () => {
 
   if (!user) {
     return (
-      <div className={styles.skeletonContainer}>
-        <div className={styles.skeletonHeader} />
-        <div className={styles.skeletonCard} />
-        <div className={styles.skeletonSection} />
-        <div className={styles.skeletonSection} />
-      </div>
+      <ErrorFallback message="User data could not be loaded. Please make sure you selected a valid user." />
     );
   }
 
