@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./errorFallback.module.scss";
+import styles from "./errorfallback.module.scss";
 import errorIcon from "../../assets/icons/error.svg"; 
 
 interface ErrorFallbackProps {
